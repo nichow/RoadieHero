@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f4ee2ad9c45358445b4c2458472dad47
-timeCreated: 1477791672
+guid: f2ed4a0e55023bd40bdc9e605b44f420
+timeCreated: 1478705404
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -44,10 +44,10 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 2048
+  textureFormat: -3
+  maxTextureSize: 4096
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -74,10 +74,10 @@ TextureImporter:
       name: Roadie Standing_0
       rect:
         serializedVersion: 2
-        x: 194
-        y: 2060
-        width: 124
-        height: 259
+        x: 198
+        y: 2111
+        width: 128
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -87,10 +87,10 @@ TextureImporter:
       name: Roadie Standing_1
       rect:
         serializedVersion: 2
-        x: 693
-        y: 2060
+        x: 711
+        y: 2111
         width: 126
-        height: 254
+        height: 258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,10 +100,10 @@ TextureImporter:
       name: Roadie Standing_2
       rect:
         serializedVersion: 2
-        x: 1194
-        y: 2056
-        width: 124
-        height: 258
+        x: 1222
+        y: 2107
+        width: 128
+        height: 262
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,10 +113,10 @@ TextureImporter:
       name: Roadie Standing_3
       rect:
         serializedVersion: 2
-        x: 1693
-        y: 2056
+        x: 1735
+        y: 2107
         width: 126
-        height: 263
+        height: 266
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,10 +126,10 @@ TextureImporter:
       name: Roadie Standing_4
       rect:
         serializedVersion: 2
-        x: 194
-        y: 1557
-        width: 124
-        height: 256
+        x: 198
+        y: 1594
+        width: 128
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,10 +139,10 @@ TextureImporter:
       name: Roadie Standing_5
       rect:
         serializedVersion: 2
-        x: 693
-        y: 1566
+        x: 711
+        y: 1602
         width: 126
-        height: 240
+        height: 247
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,10 +152,10 @@ TextureImporter:
       name: Roadie Standing_6
       rect:
         serializedVersion: 2
-        x: 1194
-        y: 1566
-        width: 124
-        height: 238
+        x: 1222
+        y: 1602
+        width: 128
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +165,10 @@ TextureImporter:
       name: Roadie Standing_7
       rect:
         serializedVersion: 2
-        x: 1693
-        y: 1566
+        x: 1735
+        y: 1602
         width: 126
-        height: 238
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: Roadie Standing_8
       rect:
         serializedVersion: 2
-        x: 194
-        y: 1060
-        width: 124
-        height: 247
+        x: 198
+        y: 1087
+        width: 128
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: Roadie Standing_9
       rect:
         serializedVersion: 2
-        x: 693
-        y: 1065
+        x: 711
+        y: 1091
         width: 126
-        height: 238
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,10 +204,10 @@ TextureImporter:
       name: Roadie Standing_10
       rect:
         serializedVersion: 2
-        x: 1217
-        y: 1131
+        x: 1246
+        y: 1158
         width: 51
-        height: 243
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: Roadie Standing_11
       rect:
         serializedVersion: 2
-        x: 1716
-        y: 1131
-        width: 53
-        height: 238
+        x: 1759
+        y: 1158
+        width: 51
+        height: 244
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,10 +230,10 @@ TextureImporter:
       name: Roadie Standing_12
       rect:
         serializedVersion: 2
-        x: 217
-        y: 632
-        width: 88
-        height: 241
+        x: 222
+        y: 647
+        width: 91
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,10 +243,10 @@ TextureImporter:
       name: Roadie Standing_13
       rect:
         serializedVersion: 2
-        x: 716
-        y: 632
-        width: 88
-        height: 241
+        x: 735
+        y: 647
+        width: 91
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: Roadie Standing_14
       rect:
         serializedVersion: 2
-        x: 1231
-        y: 632
-        width: 53
-        height: 241
+        x: 1262
+        y: 647
+        width: 51
+        height: 246
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Roadie Standing_15
       rect:
         serializedVersion: 2
-        x: 1732
-        y: 632
+        x: 1775
+        y: 647
         width: 51
-        height: 237
+        height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,10 +282,10 @@ TextureImporter:
       name: Roadie Standing_16
       rect:
         serializedVersion: 2
-        x: 194
-        y: 131
-        width: 90
-        height: 242
+        x: 198
+        y: 134
+        width: 91
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +295,10 @@ TextureImporter:
       name: Roadie Standing_17
       rect:
         serializedVersion: 2
-        x: 693
-        y: 131
-        width: 90
-        height: 242
+        x: 711
+        y: 134
+        width: 91
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

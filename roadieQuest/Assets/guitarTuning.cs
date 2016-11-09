@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class guitarTuning : MonoBehaviour
 {
     public AudioSource Audio;
-    public AudioClip[] AudioClips;
+    public AudioClip[] String1, String2, String3, String4, String5, String6;
     public Color originalColor;
     public Color newColor;
-    public float[] counters;
+    int[] counters = { 0, 0, 0, 0, 0, 0 };
     public GameObject[] pegs;
     public GameObject youRock;
     public ParticleSystem explosion;
@@ -32,34 +32,40 @@ public class guitarTuning : MonoBehaviour
         var sprites = GetComponentsInChildren<SpriteRenderer>();
         
 
-        if (Input.GetButtonDown("1String"))
+        if (Input.GetButtonDown("1String") && counters[0] < 5)
         {
-            counters[0] += .5f;
+            Audio.PlayOneShot(String1[counters[0]]);
+            counters[0] += 1;
             pegs[5].GetComponent<Animator>().SetTrigger("turn");
         }
-        else if (Input.GetButtonDown("2String"))
+        else if (Input.GetButtonDown("2String") && counters[1] < 5)
         {
-            counters[1] += .5f;
+            Audio.PlayOneShot(String1[counters[1]]);
+            counters[1] += 1;
             pegs[4].GetComponent<Animator>().SetTrigger("turn");            
         }
-        else if (Input.GetButtonDown("3String"))
+        else if (Input.GetButtonDown("3String") && counters[2] < 5)
         {
-            counters[2] += .5f;
+            Audio.PlayOneShot(String1[counters[2]]);
+            counters[2] += 1;
             pegs[3].GetComponent<Animator>().SetTrigger("turn");
         }
-        else if (Input.GetButtonDown("4String"))
+        else if (Input.GetButtonDown("4String") && counters[3] < 5)
         {
-            counters[3] += .5f;
+            Audio.PlayOneShot(String1[counters[3]]);
+            counters[3] += 1;
             pegs[2].GetComponent<Animator>().SetTrigger("turn");
         }
-        else if (Input.GetButtonDown("5String"))
+        else if (Input.GetButtonDown("5String") && counters[4] < 5)
         {
-            counters[4] += .5f;
+            Audio.PlayOneShot(String1[counters[4]]);
+            counters[4] += 1;
             pegs[1].GetComponent<Animator>().SetTrigger("turn");
         }
-        else if (Input.GetButtonDown("6String"))
+        else if (Input.GetButtonDown("6String") && counters[5] < 5)
         {
-            counters[5] += .5f;
+            Audio.PlayOneShot(String1[counters[5]]);
+            counters[5] += 1;
             pegs[0].GetComponent<Animator>().SetTrigger("turn");
         }
 
@@ -80,43 +86,19 @@ public class guitarTuning : MonoBehaviour
 
         for (int i = 0; i < counters.Length; i++)
         {
-            if (counters[i] >= .0035f)
-            {
-                counters[i] -= .0035f;
-            }
-                
-
-            if (counters[i] > 4f)
-            {
-                sprites[i + 1].color = originalColor;
-            }
-            else if (counters[i] >= 2f)
+            if (counters[i] == 5)
             {
                 sprites[i + 1].color = newColor;
             }
-            else
-            {
-                sprites[i + 1].color = originalColor;
-            }
-
         }
 
     }
 
-    /* Called when the player enters the 
-     * tuning minigame */
-    public void tune()
-    {
-        Debug.Log("called");
-        Audio = GetComponent<AudioSource>();
-
-    }
-
-    bool isTuned(float[] counters)
+    bool isTuned(int[] counters)
     {
         foreach (var counter in counters)
         {
-            if (!(counter >= 2f && counter <= 4f))
+            if (!(counter == 5))
                 return false;
         }
         return true;

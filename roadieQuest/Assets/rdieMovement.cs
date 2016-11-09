@@ -55,15 +55,19 @@ public class rdieMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("trigger");
-        //if (other.name == "objGuitar")
-        //{
-          //  EditorSceneManager.LoadScene("tuning");
-        //}
         if (other.tag.Contains("NPC"))
         {
             Debug.Log("will it load?");
             SceneManager.LoadScene("dialogue");
+        }
+        if(other.tag.Contains("Background"))
+        {
+            Debug.Log("Screen transition, stat!");
+            var bgScript = other.GetComponent<Background>();
+            if(transform.position.x > 0)
+                bgScript.BackgroundChange(1);
 
+            bgScript.BackgroundChange(0);
         }
 
     }

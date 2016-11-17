@@ -64,10 +64,15 @@ public class rdieMovement : MonoBehaviour
         {
             Debug.Log("Screen transition, stat!");
             var bgScript = other.GetComponent<Background>();
-            if(transform.position.x > 0)
+            if (transform.position.x > 0)
+            {
                 bgScript.BackgroundChange(1);
-
-            bgScript.BackgroundChange(0);
+                
+            }
+            else
+            {
+                bgScript.BackgroundChange(0);
+            }
         }
 
     }

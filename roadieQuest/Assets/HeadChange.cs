@@ -10,15 +10,27 @@ public class HeadChange : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        StartCoroutine(changeHead());
         personTracker = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        StartCoroutine(changeHead());
         if (Input.GetButtonDown("Submit"))
-        {
-            personTracker++;
-        }
+            {
+                
+                personTracker++;
+                if (personTracker >= personTalking.Length)
+                {
+                    StopAllCoroutines();
+                    enabled = false;
+                }
+            }  
+    }
+
+    IEnumerator changeHead()
+    {
         if (personTalking[personTracker] == 0)
         {
             GetComponent<UnityEngine.UI.Image>().sprite = roadieHead;
@@ -27,6 +39,7 @@ public class HeadChange : MonoBehaviour {
         {
             GetComponent<UnityEngine.UI.Image>().sprite = travisHead;
         }
+        yield return null;
     }
 
 }

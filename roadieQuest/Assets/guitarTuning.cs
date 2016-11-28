@@ -8,8 +8,10 @@ public class guitarTuning : MonoBehaviour
     public AudioClip[] String1, String2, String3, String4, String5, String6;
     public Color originalColor;
     public Color newColor;
-    public int[] counters = { 0, 0, 0, 0, 0, 0 };
+    public float[] counters = { 0, 0, 0, 0, 0, 0 };
+    public int[] audioCounters = { 0, 0, 0, 0, 0, 0 };
     public GameObject[] pegs;
+    public SpriteRenderer[] sprites;
     public GameObject youRock;
     public ParticleSystem explosion;
 
@@ -27,75 +29,42 @@ public class guitarTuning : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        
-
-        if (Input.GetButtonDown("1String") && counters[0] < 5)
+    { 
+        if (Input.GetButtonDown("6String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-
-            Audio.PlayOneShot(String1[counters[0]]);
-            counters[0] += 1;
-            pegs[5].GetComponent<Animator>().StopPlayback();
-            pegs[5].GetComponent<Animator>().SetTrigger("turn");
+            tuneString(0, String6);
         }
-        else if (Input.GetButtonDown("2String") && counters[1] < 5)
+        else if (Input.GetButtonDown("5String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-            
-
-            Audio.PlayOneShot(String1[counters[1]]);
-            counters[1] += 1;
-            pegs[4].GetComponent<Animator>().SetTrigger("turn");            
+            tuneString(1, String5);
         }
-        else if (Input.GetButtonDown("3String") && counters[2] < 5)
+        else if (Input.GetButtonDown("4String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-
-            Audio.PlayOneShot(String1[counters[2]]);
-            counters[2] += 1;
-            pegs[3].GetComponent<Animator>().SetTrigger("turn");
+            tuneString(2, String4);
         }
-        else if (Input.GetButtonDown("4String") && counters[3] < 5)
+        else if (Input.GetButtonDown("3String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-
-            Audio.PlayOneShot(String1[counters[3]]);
-            counters[3] += 1;
-            pegs[2].GetComponent<Animator>().SetTrigger("turn");
+            tuneString(3, String3);
         }
-        else if (Input.GetButtonDown("5String") && counters[4] < 5)
+        else if (Input.GetButtonDown("2String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-
-            Audio.PlayOneShot(String1[counters[4]]);
-            counters[4] += 1;
-            pegs[1].GetComponent<Animator>().SetTrigger("turn");
+            tuneString(4, String2);
         }
-        else if (Input.GetButtonDown("6String") && counters[5] < 5)
+        else if (Input.GetButtonDown("1String"))
         {
-            if (Audio.isPlaying)
-                Audio.Stop();
-
-            Audio.PlayOneShot(String1[counters[5]]);
-            counters[5] += 1;
-            pegs[0].GetComponent<Animator>().SetTrigger("turn");
+            tuneString(5, String1);
         }
 
         if (Input.GetButtonDown("Submit"))
         {
-            Debug.Log("checking...");
             if (isTuned(counters))
             {
-                Debug.Log("Got it, familia");
                 for (int i = 0; i < counters.Length; i++)
                     counters[i] = counters[i];
+
+                if (Audio.isPlaying)
+                    Audio.Stop();
+
                 explosion.Play();
                 youRock.GetComponent<SpriteRenderer>().enabled = true;
                 Audio.Play();
@@ -105,21 +74,61 @@ public class guitarTuning : MonoBehaviour
 
         for (int i = 0; i < counters.Length; i++)
         {
-            if (counters[i] == 5)
+            if (counters[i] > 2f && counters[i] < 4f)
             {
-                sprites[i + 1].color = newColor;
+                audioCounters[i] = 4;
+                sprites[i].color = newColor;
             }
+            else if (counters[i] <= 2f)
+            {
+                if (counters[i] >= 1.5f)
+                    audioCounters[i] = 3;
+                else if (counters[i] >= 1f)
+                    audioCounters[i] = 2;
+                else if (counters[i] >= 0.5f)
+                    audioCounters[i] = 1;
+                else
+                    audioCounters[i] = 0;
+
+                sprites[i].color = originalColor;
+            }
+            else if(counters[i] >= 4f)
+            {
+                audioCounters[i] = 4;
+                sprites[i].color = originalColor;
+            }
+
+            if (counters[i] > .005f)
+                counters[i] -= .005f;
         }
 
     }
 
-    bool isTuned(int[] counters)
+    void tuneString(int counter, AudioClip[] String)
+    {
+        if (Audio.isPlaying)
+            Audio.Stop();
+
+        Audio.PlayOneShot(String[audioCounters[counter]]);
+        counters[counter] += .5f;
+        pegs[counter].GetComponent<Animator>().SetTrigger("turn");
+    }
+
+    bool isTuned(float[] counters)
     {
         foreach (var counter in counters)
         {
-            if (!(counter == 5))
+            if (!(counter > 2f && counter < 4f))
                 return false;
         }
         return true;
+    }
+
+    IEnumerator SpriteFlicker(SpriteRenderer thisSprite)
+    {
+        thisSprite.enabled = false;
+        yield return new WaitForSeconds(.75f);
+        thisSprite.enabled = true;
+        yield return new WaitForSeconds(.75f);
     }
 }

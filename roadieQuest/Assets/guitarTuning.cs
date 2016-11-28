@@ -6,12 +6,11 @@ public class guitarTuning : MonoBehaviour
 {
     public AudioSource Audio;
     public AudioClip[] String1, String2, String3, String4, String5, String6;
-    public Color originalColor;
-    public Color newColor;
     public float[] counters = { 0, 0, 0, 0, 0, 0 };
     public int[] audioCounters = { 0, 0, 0, 0, 0, 0 };
     public GameObject[] pegs;
     public SpriteRenderer[] sprites;
+    public Sprite[] spriteRotation;
     public GameObject youRock;
     public ParticleSystem explosion;
 
@@ -19,10 +18,9 @@ public class guitarTuning : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
         foreach (var sprite in sprites)
         {
-            sprite.color = originalColor;
+            StartCoroutine(SpriteFlicker(sprite));
         }
         Camera.main.GetComponent<cameraMovement>();
     }
@@ -77,7 +75,7 @@ public class guitarTuning : MonoBehaviour
             if (counters[i] > 2f && counters[i] < 4f)
             {
                 audioCounters[i] = 4;
-                sprites[i].color = newColor;
+                sprites[i].sprite = spriteRotation[1];
             }
             else if (counters[i] <= 2f)
             {
@@ -90,12 +88,12 @@ public class guitarTuning : MonoBehaviour
                 else
                     audioCounters[i] = 0;
 
-                sprites[i].color = originalColor;
+                sprites[i].sprite = spriteRotation[0];
             }
             else if(counters[i] >= 4f)
             {
                 audioCounters[i] = 4;
-                sprites[i].color = originalColor;
+                sprites[i].sprite = spriteRotation[2];
             }
 
             if (counters[i] > .005f)
@@ -126,9 +124,12 @@ public class guitarTuning : MonoBehaviour
 
     IEnumerator SpriteFlicker(SpriteRenderer thisSprite)
     {
-        thisSprite.enabled = false;
-        yield return new WaitForSeconds(.75f);
-        thisSprite.enabled = true;
-        yield return new WaitForSeconds(.75f);
+        while (true)
+        {
+            thisSprite.enabled = false;
+            yield return new WaitForSeconds(.5f);
+            thisSprite.enabled = true;
+            yield return new WaitForSeconds(.5f);
+        }
     }
 }

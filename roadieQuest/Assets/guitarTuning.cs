@@ -19,11 +19,7 @@ public class guitarTuning : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        foreach (var sprite in sprites)
-        {
-            StartCoroutine(SpriteFlicker(sprite));
-            crRunning = true;
-        }
+        InitAllCoroutines();
         Camera.main.GetComponent<cameraMovement>();
     }
 
@@ -84,10 +80,8 @@ public class guitarTuning : MonoBehaviour
             else if (counters[i] <= 2f)
             {
                 if(!crRunning)
-                {
-                    StartCoroutine(SpriteFlicker(sprite);
-                    crRunning = true;
-                }
+                    InitAllCoroutines();
+                
                 if (counters[i] >= 1.5f)
                     audioCounters[i] = 3;
                 else if (counters[i] >= 1f)
@@ -100,7 +94,10 @@ public class guitarTuning : MonoBehaviour
                 sprites[i].sprite = spriteRotation[0];
             }
             else if(counters[i] >= 4f)
-            {              
+            {
+                if (!crRunning)
+                    InitAllCoroutines();
+
                 audioCounters[i] = 4;
                 sprites[i].sprite = spriteRotation[2];
             }
@@ -130,6 +127,16 @@ public class guitarTuning : MonoBehaviour
         }
         return true;
     }
+
+    void InitAllCoroutines()
+    {
+        foreach (var sprite in sprites)
+        {
+            StartCoroutine(SpriteFlicker(sprite));
+            crRunning = true;
+        }
+    }
+
 
     IEnumerator SpriteFlicker(SpriteRenderer thisSprite)
     {

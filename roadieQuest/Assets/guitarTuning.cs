@@ -13,6 +13,7 @@ public class guitarTuning : MonoBehaviour
     public Sprite[] spriteRotation;
     public GameObject youRock;
     public ParticleSystem explosion;
+    public bool crRunning;
 
 
     // Use this for initialization
@@ -21,6 +22,7 @@ public class guitarTuning : MonoBehaviour
         foreach (var sprite in sprites)
         {
             StartCoroutine(SpriteFlicker(sprite));
+            crRunning = true;
         }
         Camera.main.GetComponent<cameraMovement>();
     }
@@ -76,9 +78,16 @@ public class guitarTuning : MonoBehaviour
             {
                 audioCounters[i] = 4;
                 sprites[i].sprite = spriteRotation[1];
+                StopAllCoroutines();
+                crRunning = false;
             }
             else if (counters[i] <= 2f)
             {
+                if(!crRunning)
+                {
+                    StartCoroutine(SpriteFlicker(sprite);
+                    crRunning = true;
+                }
                 if (counters[i] >= 1.5f)
                     audioCounters[i] = 3;
                 else if (counters[i] >= 1f)
@@ -91,7 +100,7 @@ public class guitarTuning : MonoBehaviour
                 sprites[i].sprite = spriteRotation[0];
             }
             else if(counters[i] >= 4f)
-            {
+            {              
                 audioCounters[i] = 4;
                 sprites[i].sprite = spriteRotation[2];
             }
@@ -131,5 +140,6 @@ public class guitarTuning : MonoBehaviour
             thisSprite.enabled = true;
             yield return new WaitForSeconds(.5f);
         }
+        
     }
 }
